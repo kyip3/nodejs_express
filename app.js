@@ -3,12 +3,13 @@ const express = require('express');
 
 const app = express();
 
-app.use((req,res,next)=>{
-    console.log('in middleware');
-    next(); // allow request to continue to the next middleware below
+app.use('/add-product',(req,res,next)=>{
+    console.log('another middleware');
+    res.send('<h1>The "Add Product" Page</h1>');
 });
 
-app.use((req,res,next)=>{
+//will load as long as there is a /
+app.use('/',(req,res,next)=>{
     console.log('another middleware');
     res.send('<h1>hello from express!</h1>');
 });
